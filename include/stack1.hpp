@@ -1,4 +1,4 @@
-// Copyright 2020 Your Name <your_email>
+// Copyright 2020 Alex Volodin <your_email>
 
 #ifndef TEMPLATE_STACK1_HPP
 #define TEMPLATE_STACK1_HPP
