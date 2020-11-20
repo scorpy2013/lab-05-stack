@@ -34,11 +34,6 @@ TEST(Apple, Movy_Copy) {
   EXPECT_FALSE(std::is_copy_constructible<Apple>::value);
 }
 
-TEST(Samsung, RightClass) {
-  EXPECT_TRUE(std::is_move_constructible<Samsung>::value);
-  EXPECT_TRUE(std::is_copy_constructible<Samsung>::value);
-}
-
 TEST(Stack1, Move) {
   EXPECT_TRUE(std::is_move_constructible<Stack1<int>>::value);
   EXPECT_TRUE(std::is_move_assignable<Stack1<int>>::value);
@@ -95,20 +90,11 @@ TEST(Stack2, Move_Push) {
   Apple phone1{"5S", 25, 1024, 32};
   stack.push(std::move(phone1));
   Apple phone2{stack.pop()};
-  EXPECT_EQ(phone2.type, "6");
-  EXPECT_EQ(phone2.diagonal, 27);
-  EXPECT_EQ(phone2.screen_resolution, 2048);
-  EXPECT_EQ(phone2.rom, 64);
+  EXPECT_EQ(phone2.type, "5S");
+  EXPECT_EQ(phone2.diagonal, 25);
+  EXPECT_EQ(phone2.screen_resolution, 1024);
+  EXPECT_EQ(phone2.rom, 32);
 }
-/*
-TEST(Stack2, Push) {
-  Stack2<Apple> stack;
-  stack.push(Apple("SE", 27, 2048, 64));
-  stack.push_emplace("Xr", 27, 2048, 64);
-  EXPECT_EQ(stack.head().x, 3);
-  stack.pop();
-  EXPECT_EQ(stack.head().y, 4);
-}*/
 
 TEST(NonCopiedStack, Pop) {
   Stack2<Apple> stack;
