@@ -3,27 +3,27 @@
 #ifndef TEMPLATE_STACK2_HPP
 #define TEMPLATE_STACK2_HPP
 #include <iostream>
-#include <type_traits>
 #include <stack1.hpp>
+#include <type_traits>
 template <typename T>
-class Stack2
-{
+class Stack2 {
  public:
-  Stack2() = default; // конструктор по умолчанию
+  Stack2() = default;  // конструктор по умолчанию
   Stack2(Stack2 &&st) noexcept = default;
   Stack2(const Stack2 &st) = delete;
   auto operator=(const Stack2 &st) -> Stack2 & = delete;
   auto operator=(Stack2 &&st) noexcept -> Stack2 & = default;
-  ~Stack2(); // деструктор
+  ~Stack2();  // деструктор
 
-  template <typename ... Args>
-  void push_emplace(Args&&... value);
-  void push(T&& value);
-  const T& head() const;
+  template <typename... Args>
+  void push_emplace(Args &&... value);
+  void push(T &&value);
+  const T &head() const;
   T pop();
+
  private:
-  Element<T> *HEAD= nullptr;
-  Element<T> *TAIL= nullptr;
+  Element<T> *HEAD = nullptr;
+  Element<T> *TAIL = nullptr;
 };
 
 template <typename T>
@@ -62,9 +62,9 @@ void Stack2<T>::push_emplace(Args &&... value) {
 template <typename T>
 Stack2<T>::~Stack2() {
   while (HEAD) {
-    auto *current_element = HEAD; // текущий элемент - теперь "вершина"
-    HEAD = HEAD->prev; // "вершина" является предыдущим элементом
-    delete current_element; // уничтожаем текущий элемент
+    auto *current_element = HEAD;  // текущий элемент - теперь "вершина"
+    HEAD = HEAD->prev;  // "вершина" является предыдущим элементом
+    delete current_element;  // уничтожаем текущий элемент
   }
 }
 #endif  // TEMPLATE_STACK2_HPP

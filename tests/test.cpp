@@ -1,6 +1,7 @@
 // Copyright 2020 Alex Volodin <your_email>
 
 #include <gtest/gtest.h>
+
 #include <stack1.hpp>
 #include <stack2.hpp>
 class Apple {
@@ -9,7 +10,10 @@ class Apple {
   int diagonal, screen_resolution, rom;
   Apple() = default;
   Apple(std::string TYPE, int DIAGONAL, int SCREEN_RESOLUTION, int ROM)
-      :type(TYPE), diagonal(DIAGONAL), screen_resolution(SCREEN_RESOLUTION), rom(ROM) {};
+      : type(TYPE),
+        diagonal(DIAGONAL),
+        screen_resolution(SCREEN_RESOLUTION),
+        rom(ROM){};
   Apple(Apple&& value) noexcept = default;
   Apple(const Apple& value) = delete;
   auto operator=(Apple&& value) noexcept -> Apple& = default;
@@ -22,7 +26,7 @@ class Samsung {
   int memory;
   Samsung() = default;
   Samsung(std::string MODEL, std::string PROCESSOR, int MEMORY)
-      :model(MODEL), processor(PROCESSOR), memory(MEMORY) {};
+      : model(MODEL), processor(PROCESSOR), memory(MEMORY){};
   Samsung(Samsung&& value) noexcept = default;
   Samsung(const Samsung& value) = delete;
   auto operator=(Samsung&& value) noexcept -> Samsung& = default;
@@ -78,7 +82,6 @@ TEST(Stack2, Move_Push) {
   EXPECT_EQ(phone2.rom, 32);
 }
 
-
 TEST(Stack1, Pop) {
   Stack1<int> stack;
   EXPECT_ANY_THROW(stack.pop());
@@ -99,6 +102,3 @@ TEST(Stack1, Head) {
   Stack1<int> stack;
   EXPECT_ANY_THROW(stack.head());
 }
-
-
-
