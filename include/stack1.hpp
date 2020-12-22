@@ -16,9 +16,9 @@ template <typename T>
 class Stack1 {
  public:
   Stack1() = default;  // конструктор по умолчанию
-  Stack1(const Stack1 &st) = delete;
-  Stack1(Stack1 &&st) noexcept = default;
+  Stack1(const Stack1 &st) = delete; // шаблон - некопируемый!
   auto operator=(const Stack1 &st) -> Stack1 & = delete;
+  Stack1(Stack1 &&st) noexcept = default; // шаблон - перемещаемый!
   auto operator=(Stack1 &&st) noexcept -> Stack1 & = default;
   ~Stack1();  // деструктор
 

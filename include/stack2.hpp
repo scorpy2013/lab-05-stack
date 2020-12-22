@@ -3,15 +3,16 @@
 #ifndef INCLUDE_STACK2_HPP_
 #define INCLUDE_STACK2_HPP_
 #include <iostream>
-#include <stack1.hpp>
 #include <type_traits>
+#include "stack1.hpp"
+
 template <typename T>
 class Stack2 {
  public:
   Stack2() = default;  // конструктор по умолчанию
-  Stack2(Stack2 &&st) noexcept = default;
-  Stack2(const Stack2 &st) = delete;
+  Stack2(const Stack2 &st) = delete; // шаблон - некопируемый!
   auto operator=(const Stack2 &st) -> Stack2 & = delete;
+  Stack2(Stack2 &&st) noexcept = default; // шаблон - перемещаемый!
   auto operator=(Stack2 &&st) noexcept -> Stack2 & = default;
   ~Stack2();  // деструктор
 
@@ -55,7 +56,7 @@ void Stack2<T>::push_emplace(Args &&... value) {
       std::is_copy_assignable<T>::value) {
     throw std::bad_typeid();
   }
-  auto *new_element = new Element<T>{{std::forward<Args>(value)...}, Stack2::HEAD};
+  auto *new_element = new Element<T>{{std::forward<Args>(value)...}, HEAD};
   HEAD = new_element;
 }
 
