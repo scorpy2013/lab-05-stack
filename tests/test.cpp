@@ -13,7 +13,7 @@ class Apple {
       : type(TYPE),
         diagonal(DIAGONAL),
         screen_resolution(SCREEN_RESOLUTION),
-        rom(ROM){};
+        rom(ROM){}
   Apple(Apple&& value) noexcept = default;
   Apple(const Apple& value) = delete;
   auto operator=(Apple&& value) noexcept -> Apple& = default;
@@ -26,7 +26,7 @@ class Samsung {
   int memory;
   Samsung() = default;
   Samsung(std::string MODEL, std::string PROCESSOR, int MEMORY)
-      : model(MODEL), processor(PROCESSOR), memory(MEMORY){};
+      : model(MODEL), processor(PROCESSOR), memory(MEMORY){}
   Samsung(Samsung&& value) noexcept = default;
   Samsung(const Samsung& value) = delete;
   auto operator=(Samsung&& value) noexcept -> Samsung& = default;
