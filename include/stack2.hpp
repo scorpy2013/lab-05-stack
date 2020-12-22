@@ -4,6 +4,7 @@
 #define INCLUDE_STACK2_HPP_
 #include <iostream>
 #include <type_traits>
+#include <utility>
 #include "stack1.hpp"
 
 template <typename T>
