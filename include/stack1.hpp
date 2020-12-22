@@ -1,7 +1,7 @@
 // Copyright 2020 Alex Volodin <your_email>
 
-#ifndef TEMPLATE_STACK1_HPP
-#define TEMPLATE_STACK1_HPP
+#ifndef INCLUDE_STACK1_HPP_
+#define INCLUDE_STACK1_HPP_
 #include <stdexcept>
 #include <utility>
 
@@ -69,4 +69,4 @@ Stack1<T>::~Stack1() {
     delete current_element;  // уничтожаем текущий элемент
   }
 }
-#endif  // TEMPLATE_STACK1_HPP
+#endif  // INCLUDE_STACK1_HPP_

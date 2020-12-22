@@ -1,7 +1,7 @@
 // Copyright 2020 Alex Volodin <your_email>
 
-#ifndef TEMPLATE_STACK2_HPP
-#define TEMPLATE_STACK2_HPP
+#ifndef INCLUDE_STACK2_HPP_
+#define INCLUDE_STACK2_HPP_
 #include <iostream>
 #include <stack1.hpp>
 #include <type_traits>
@@ -55,7 +55,7 @@ void Stack2<T>::push_emplace(Args &&... value) {
       std::is_copy_assignable<T>::value) {
     throw std::bad_typeid();
   }
-  auto *new_element = new Element<T>{{std::forward<Args>(value)...}, HEAD};
+  auto *new_element = new Element<T>{{std::forward<Args>(value)...}, Stack2::HEAD};
   HEAD = new_element;
 }
 
@@ -67,4 +67,4 @@ Stack2<T>::~Stack2() {
     delete current_element;  // уничтожаем текущий элемент
   }
 }
-#endif  // TEMPLATE_STACK2_HPP
+#endif  // INCLUDE_STACK2_HPP_
