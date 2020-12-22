@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.4)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -28,13 +27,20 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
+# TODO: rename project and delete this comment
+project(template)
+string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
+string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
+string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
+
+hunter_add_package(GTest)
+find_package(GTest CONFIG REQUIRED)
 
 # TODO: change template word to project name and delete this comment
 add_library(template STATIC
         # enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/stack1.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/stack2.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
         )
 add_executable(tests
         # TODO: enum your files and delete this comment

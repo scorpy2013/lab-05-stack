@@ -1,9 +1,9 @@
 // Copyright 2020 Alex Volodin <your_email>
 
 #include <gtest/gtest.h>
+#include "stack1.hpp"
+#include "stack2.hpp"
 
-#include <stack1.hpp>
-#include <stack2.hpp>
 class Apple {
  public:
   std::string type;
